@@ -1,0 +1,33 @@
+body{
+    /* color:#1b262c; */
+    /*color scheme:
+        1b262c
+        4cbbb9
+        77d8d8
+        eff3c6
+    */
+    background-color: #0779e4;
+}
+
+.titleParent {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    /*
+    font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])));
+    */
+    font-size: calc(14px + 3vmin); 
+    /* padding: 1em 4em; */
+}
+
+.titleChild > h1{
+    margin: 0em;
+}
+
+.titleChild > h3{
+    margin: .5em;
+}

@@ -24,6 +24,7 @@ body{
     /* padding: 1em 4em; */
 }
 
+/* ">" targets child element*/
 .titleChild > h1{
     margin: 0em;
 }

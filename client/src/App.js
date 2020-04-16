@@ -3,13 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 
 // Components
-import Landing from './components/Landing/Landing';
+import Portfolio from './components/Portfolio/Portfolio';
+import Prelanding from './components/Portfolio/Prelanding/Prelanding';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        < Landing />
+        < Portfolio />
       </header>
     </div>
   );

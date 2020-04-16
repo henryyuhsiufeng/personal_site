@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // Router elements
-import { HashRouter, Switch, Route } from 'react-router-dom';
+import { Link, useHistory, Redirect } from 'react-router-dom';
 
 // Components
 import Portfolio from '../Portfolio';
@@ -12,7 +12,10 @@ import './Prelanding.css';
 class Prelanding extends Component {
     constructor(props) {
         super(props);
-
+        this.state = {
+            toLanding: false
+        }
+        // const history = useHistory();
         this.handleYesClick = this.handleYesClick.bind(this);
     }
 
@@ -20,27 +23,35 @@ class Prelanding extends Component {
         this.setState(props => {
             this.props.userAuth.auth = true
         });
-        console.log(this.props.userAuth.auth);
-        
-        callback(this.props.userAuth.auth);
+        console.log(this.toLanding);
+        // cache the reference to this outside of callback
+        let currentComponent = this;
+        callback(this.props.userAuth.auth,currentComponent);
     }
 
-    checkIfUser (isAuth) {
+    checkIfUser (isAuth,currentComponent) {
+        
         if(isAuth){
-            console.log('callback hit');
+            currentComponent.setState((state) => ({
+                toLanding : true
+            }));
         }
     }
 
     render() {
-        return(
-            <div>
-                <h1>boolean: {this.props.userAuth.name}</h1>
-                <h1>Are you Henry Feng???</h1>
-                <button onClick={() => this.handleYesClick(this.checkIfUser)}>Yes</button>
-                <button>No</button>
-            </div>
-            
-        );
+        if(this.props.userAuth.auth === true){
+            return <Redirect to='/' />;
+        } 
+            return(
+                <div>
+                    <h1>boolean: {this.props.userAuth.name}</h1>
+                    <h1>Are you Henry Feng???</h1>
+                    <button onClick={() => this.handleYesClick(this.checkIfUser)}>Yes</button>
+                    <button>No</button>
+                </div>
+                
+            );
+        
     }
 }
 

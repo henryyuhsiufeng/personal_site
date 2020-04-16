@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 
 // Router elements
-import { HashRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Styling
 import './Portfolio.css';
 
 // Components
 import Prelanding from './Prelanding/Prelanding';
+import Landing    from  './Landing/Landing';
 
 class Portfolio extends Component {
     constructor(props) {
@@ -21,27 +22,22 @@ class Portfolio extends Component {
       }
 
     render() {
-        //if valid user then render landing
         if(this.state.userAuth.auth){
-            return(
-                <div className="titleParent">
-                    <div className="titleChild">
-                        <h3>Henry</h3>
-                    </div>
-                    <div className="titleChild">
-                        <h1>Yu-Hsiu</h1>
-                    </div>
-                    <div className="titleChild">
-                        <h3>Feng</h3>
-                    </div>
-                </div>
-            );
+            return( 
+                <Router>
+                    <Route path='/' exact component={() => <Landing/>} />
+                </Router>);
         } else {
-            return(
-                <Prelanding userAuth={this.state.userAuth}/>
-            );
+            return( 
+                <Router>
+                    <Route path='/login' component={() => <Prelanding userAuth={this.state.userAuth}/>} />          
+                </Router>);
         }
+        
+        //if valid user then render landing
+       
     }
+    
 }
 
 export default Portfolio;

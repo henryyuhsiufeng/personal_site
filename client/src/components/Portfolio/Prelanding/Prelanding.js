@@ -19,34 +19,28 @@ class Prelanding extends Component {
         this.handleYesClick = this.handleYesClick.bind(this);
     }
 
-    handleYesClick (callback) {
-        this.setState(props => {
-            this.props.userAuth.auth = true
+    handleYesClick () {
+        console.log(this.props);
+        this.setState({
+            // this.props.userAuth.auth = true
+            toLanding: true
         });
-        console.log(this.toLanding);
-        // cache the reference to this outside of callback
-        let currentComponent = this;
-        callback(this.props.userAuth.auth,currentComponent);
-    }
-
-    checkIfUser (isAuth,currentComponent) {
-        
-        if(isAuth){
-            currentComponent.setState((state) => ({
-                toLanding : true
-            }));
-        }
+        // console.log( this.props.userAuth.auth);
+        this.setState({toLanding:true});
     }
 
     render() {
-        if(this.props.userAuth.auth === true){
-            return <Redirect to='/' />;
+        if(this.props.userAuth === true){
+            console.log(this.props.auth);
+            return(<div>
+                    <h1>asdf</h1>
+                 </div>);
         } 
             return(
                 <div>
                     <h1>boolean: {this.props.userAuth.name}</h1>
                     <h1>Are you Henry Feng???</h1>
-                    <button onClick={() => this.handleYesClick(this.checkIfUser)}>Yes</button>
+                    <button onClick={() => {this.handleYesClick();this.props.handleLogin();}}>Yes</button>
                     <button>No</button>
                 </div>
                 

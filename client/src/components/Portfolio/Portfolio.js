@@ -15,40 +15,15 @@ class Portfolio extends Component {
         super(props);
 
         this.state = {
-            userAuth: {
-                name:'Test test test yo',
-                auth:false
-            }
+           //TODO
         };
-
-        this.handleLogin = this.handleLogin.bind(this);
       }
 
-   
-
     render() {
-        console.log(this.state.userAuth.auth);
-        if(this.state.userAuth.auth){
-            return( 
-                <Router>
-                    <Switch>
-                         <Route path='/portfolio' exact component={() => <Landing/>} />
-                    </Switch>
-                </Router>
-                );
-        } 
-        else {
-            
-            return(<div></div>);        
-               
-        }
-            
-        
-        
-        //if valid user then render landing
-       
+        return(<div>
+            <h1>PORTFOLIO</h1>>
+        </div>);
     }
-    
 }
 
 export default Portfolio;

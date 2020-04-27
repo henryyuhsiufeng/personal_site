@@ -1,7 +1,7 @@
 import React, { useState }  from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Redirect } from 'react-router-dom';
+
 
 // Components
 import Portfolio from './components/Portfolio/Portfolio';
@@ -14,13 +14,17 @@ function App() {
    setAuth(true); 
   }
   
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Prelanding handleLogin={handleLogin} userAuth={auth}/>
-      </header>
-    </div>
-  );
+  if(auth == false){
+    return (
+      <div className="App">
+          <Prelanding handleLogin={handleLogin} userAuth={auth}/>
+      </div>
+    );
+  } else {
+    return(
+      <Portfolio />
+    );
+  }
 }
 
 export default App;
